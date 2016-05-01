@@ -17,11 +17,14 @@ tester.run("no-todo", rule, {
     ],
     invalid: [
         {
-            text: "t0, t1, t2, t3, t4",
+            text: "t0, t1, t2, t3, t4, t5",
             errors: [
                 {
-                    message: " exceeds the maximum line length of"
+                    message: "This sentence exceeds the maximum count of comma. Maximum is 4.",
+                    line: 1,
+                    column: 1
                 }
             ]
-        }]
+        }
+    ]
 });
