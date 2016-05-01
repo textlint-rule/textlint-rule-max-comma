@@ -1,4 +1,4 @@
-# textlint-rule-max-comma
+# textlint-rule-max-comma [![Build Status](https://travis-ci.org/azu/textlint-rule-max-comma.svg?branch=master)](https://travis-ci.org/azu/textlint-rule-max-comma)
 
 [textlint](http://textlint.github.io/ "textlint") rule is that limit maximum comma(,) count of sentence.
 
