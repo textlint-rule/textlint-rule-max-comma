@@ -25,6 +25,18 @@ tester.run("no-todo", rule, {
                     column: 1
                 }
             ]
+        },
+        // multi sentence
+        {
+            text: `First line, is ok.
+Second, this, is, not, ok, sentence.`,
+            errors: [
+                {
+                    message: "This sentence exceeds the maximum count of comma. Maximum is 4.",
+                    line: 2,
+                    column: 1
+                }
+            ]
         }
     ]
 });

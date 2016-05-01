@@ -20,8 +20,12 @@ module.exports = function (context, options = defaultOptions) {
             sentences.forEach(sentence => {
                 const sentenceValue = sentence.value;
                 const count = countOfComma(sentenceValue);
-                if(count > maxComma) {
-                    report(node, new RuleError(`This sentence exceeds the maximum count of comma. Maximum is ${maxComma}.`, sentence));
+                if (count > maxComma) {
+                    const paddingStart = {
+                        line: sentence.loc.start.line - 1,
+                        column: sentence.loc.start.column
+                    };
+                    report(node, new RuleError(`This sentence exceeds the maximum count of comma. Maximum is ${maxComma}.`, paddingStart));
                 }
             });
         }
