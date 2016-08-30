@@ -17,7 +17,10 @@ module.exports = function(context, options = defaultOptions) {
             const nodeWithoutCode = filter(node, (node) => {
                 return node.type !== Syntax.Code;
             });
-            const texts = nodeWithoutCode.children ? nodeWithoutCode.children.map(child => {
+            if (!nodeWithoutCode) {
+                return;
+            }
+            const texts = Array.isArray(nodeWithoutCode.children) ? nodeWithoutCode.children.map(child => {
                 return getSource(child);
             }) : [];
             const text = texts.join("");
