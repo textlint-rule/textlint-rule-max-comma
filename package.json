@@ -39,7 +39,6 @@
   },
   "dependencies": {
     "sentence-splitter": "^2.0.0",
-    "textlint-util-to-string": "^2.0.0",
     "unist-util-filter": "^0.2.1"
   }
 }

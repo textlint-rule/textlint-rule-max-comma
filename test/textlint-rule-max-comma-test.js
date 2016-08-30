@@ -1,6 +1,7 @@
 const TextLintTester = require("textlint-tester");
 const tester = new TextLintTester();
 const rule = require("../src/textlint-rule-max-comma");
+const fs = require("fs");
 // ruleName, rule, { valid, invalid }
 tester.run("no-todo", rule, {
     valid: [
@@ -8,13 +9,15 @@ tester.run("no-todo", rule, {
         "This is text.",
         // 3
         "0, 1, 2, 3",
-        "`sum(0,1,2,3,4,5,6,7,8,9,10)` is ok",
+        "This `sum(0,1,2,3,4,5,6,7,8,9,10)` is ok",
         {
             options: {
                 max: 5
             },
             text: "0, 1, 2, 3, 4"
-        }
+        },
+        // example
+        fs.readFileSync(__dirname + "/fixtures/README.md", "utf-8")
     ],
     invalid: [
         {

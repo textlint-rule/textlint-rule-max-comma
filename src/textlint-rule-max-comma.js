@@ -2,7 +2,6 @@
 "use strict";
 import {split, Syntax as SentenceSyntax} from "sentence-splitter";
 const filter = require("unist-util-filter");
-const StringSource = require("textlint-util-to-string");
 function countOfComma(text) {
     return text.split(",").length - 1;
 }
@@ -18,8 +17,10 @@ module.exports = function(context, options = defaultOptions) {
             const nodeWithoutCode = filter(node, (node) => {
                 return node.type !== Syntax.Code;
             });
-            const source = new StringSource(nodeWithoutCode);
-            const text = source.toString();
+            const texts = nodeWithoutCode.children ? nodeWithoutCode.children.map(child => {
+                return getSource(child);
+            }) : [];
+            const text = texts.join("");
             const sentences = split(text).filter(node => node.type === SentenceSyntax.Sentence);
             sentences.forEach(sentence => {
                 const sentenceValue = sentence.value;
