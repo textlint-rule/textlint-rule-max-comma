@@ -18,12 +18,12 @@ export default function (context, options = defaultOptions) {
     return {
         [Syntax.Paragraph](node) {
             const paragraphSentence = splitAST(node)
-            const paragraphSencenceWithoutNode = filter(paragraphSentence, (node) => {
+            const paragraphSentenceWithoutNode = filter(paragraphSentence, (node) => {
                 return node.type !== Syntax.Code;
             });
             // This `sum(0,1,2,3,4,5,6,7,8,9,10)` is ok
             // → This  is ok
-            const sentencesWithoutCode = paragraphSencenceWithoutNode
+            const sentencesWithoutCode = paragraphSentenceWithoutNode
                 .children
                 .filter(node => node.type === SentenceSyntax.Sentence);
             sentencesWithoutCode.forEach(sentence => {
