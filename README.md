@@ -24,7 +24,7 @@ Configure `"max"` value of the `.textlintrc` file.
 {
   "rules": {
     "max-comma": {
-        "max" : 3
+        "max" : 4
     }
   }
 }
