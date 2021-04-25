@@ -17,14 +17,16 @@ export default function (context, options = defaultOptions) {
     const { Syntax, RuleError, report, getSource } = context;
     return {
         [Syntax.Paragraph](node) {
-            const nodeWithoutCode = filter(node, (node) => {
+            const paragraphSentence = splitAST(node)
+            const paragraphSencenceWithoutNode = filter(paragraphSentence, (node) => {
                 return node.type !== Syntax.Code;
             });
-            if (!nodeWithoutCode) {
-                return;
-            }
-            const sentences = splitAST(nodeWithoutCode).children.filter(node => node.type === SentenceSyntax.Sentence);
-            sentences.forEach(sentence => {
+            // This `sum(0,1,2,3,4,5,6,7,8,9,10)` is ok
+            // → This  is ok
+            const sentencesWithoutCode = paragraphSencenceWithoutNode
+                .children
+                .filter(node => node.type === SentenceSyntax.Sentence);
+            sentencesWithoutCode.forEach(sentence => {
                 const source = new StringSource(sentence);
                 const sentenceValue = source.toString();
                 const count = countOfComma(sentenceValue);
