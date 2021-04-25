@@ -8,7 +8,7 @@ tester.run("no-todo", rule, {
     valid: [
         // no match
         "This is text.",
-        // 3
+        // 3 is ok by default
         "0, 1, 2, 3",
         "This `sum(0,1,2,3,4,5,6,7,8,9,10)` is ok",
         {
