@@ -37,7 +37,7 @@ Configure `"max"` value of the `.textlintrc` file.
 ## Related
 
 - [textlint-rule-max-ten](https://github.com/textlint-ja/textlint-rule-max-ten)
-  - Japanese commama(`、`) edition
+  - Japanese comma(`、`) edition
 
 ## Contributing
 
