@@ -6,6 +6,7 @@ const tester = new TextLintTester();
 // ruleName, rule, { valid, invalid }
 tester.run("no-todo", rule, {
     valid: [
+        "``", // no content
         // no match
         "This is text.",
         // 4 is ok by default

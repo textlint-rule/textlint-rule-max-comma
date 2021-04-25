@@ -22,6 +22,9 @@ export default function (context, options = defaultOptions) {
             const paragraphSentenceWithoutNode = filter(paragraphSentence, (node) => {
                 return node.type !== Syntax.Code;
             });
+            if (!paragraphSentenceWithoutNode) {
+                return;
+            }
             // This `sum(0,1,2,3,4,5,6,7,8,9,10)` is ok
             // → This  is ok
             const sentencesWithoutCode = paragraphSentenceWithoutNode
