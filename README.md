@@ -12,9 +12,11 @@
     $ $(npm bin)/textlint --rule max-comma README.md
     #    11:0  error  This sentence exceeds the maximum count of comma. Maximum is 4.
 
-## Configure
+## Options
 
-Configure the maximum number of "," allowed in a sentence. The default is `4`
+- `max`: maximum number of ","
+  - Default: `3`
+  - It means that report an error if the sentence include 4 or more `,` 
 
 Configure `"max"` value of the `.textlintrc` file.
 
