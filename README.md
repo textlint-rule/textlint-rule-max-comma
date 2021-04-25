@@ -36,7 +36,8 @@ Configure `"max"` value of the `.textlintrc` file.
 
 ## Related
 
-- [azu/textlint-rule-max-ten: textlint rule that limit maxinum ten(、) count of sentence.](https://github.com/azu/textlint-rule-max-ten "azu/textlint-rule-max-ten: textlint rule that limit maxinum ten(、) count of sentence.")
+- [textlint-rule-max-ten](https://github.com/textlint-ja/textlint-rule-max-ten)
+  - Japanese commama(`、`) edition
 
 ## Contributing
 
