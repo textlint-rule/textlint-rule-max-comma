@@ -9,7 +9,7 @@ function countOfComma(text) {
 }
 
 const defaultOptions = {
-    // default: max comma count is 4
+    // default: allowed command count
     max: 4
 };
 export default function (context, options = defaultOptions) {
@@ -27,7 +27,6 @@ export default function (context, options = defaultOptions) {
             sentences.forEach(sentence => {
                 const source = new StringSource(sentence);
                 const sentenceValue = source.toString();
-                console.log(sentenceValue);
                 const count = countOfComma(sentenceValue);
                 if (count > maxComma) {
                     const lastCommandIndex = sentenceValue.lastIndexOf(",");
