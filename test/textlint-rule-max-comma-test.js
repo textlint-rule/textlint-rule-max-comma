@@ -13,7 +13,7 @@ tester.run("no-todo", rule, {
         "0, 1, 2, 3, 4",
         "This `sum(0,1,2,3,4,5,6,7,8,9,10)` is ok",
         {
-            text: "0, 1, 2, 3, 4",
+            text: "0, 1, 2, 3, 4, 5",
             options: {
                 max: 5
             }
