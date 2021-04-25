@@ -18,6 +18,7 @@ export default function (context, options = defaultOptions) {
     return {
         [Syntax.Paragraph](node) {
             const paragraphSentence = splitAST(node)
+            // Remove Code node for avoiding false-positive in `CODE`
             const paragraphSentenceWithoutNode = filter(paragraphSentence, (node) => {
                 return node.type !== Syntax.Code;
             });
