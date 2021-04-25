@@ -1,7 +1,8 @@
-const TextLintTester = require("textlint-tester");
+import TextLintTester from "textlint-tester";
+import rule from "../src/textlint-rule-max-comma";
+import fs from "fs";
+
 const tester = new TextLintTester();
-const rule = require("../src/textlint-rule-max-comma");
-const fs = require("fs");
 // ruleName, rule, { valid, invalid }
 tester.run("no-todo", rule, {
     valid: [
@@ -11,10 +12,10 @@ tester.run("no-todo", rule, {
         "0, 1, 2, 3",
         "This `sum(0,1,2,3,4,5,6,7,8,9,10)` is ok",
         {
+            text: "0, 1, 2, 3, 4",
             options: {
                 max: 5
-            },
-            text: "0, 1, 2, 3, 4"
+            }
         },
         // example
         fs.readFileSync(__dirname + "/fixtures/README.md", "utf-8")
@@ -26,7 +27,7 @@ tester.run("no-todo", rule, {
                 {
                     message: "This sentence exceeds the maximum count of comma. Maximum is 4.",
                     line: 1,
-                    column: 1
+                    column: 19
                 }
             ]
         },
@@ -37,8 +38,7 @@ Second, this, is, not, ok, sentence.`,
             errors: [
                 {
                     message: "This sentence exceeds the maximum count of comma. Maximum is 4.",
-                    line: 2,
-                    column: 1
+                    index: 25
                 }
             ]
         }
