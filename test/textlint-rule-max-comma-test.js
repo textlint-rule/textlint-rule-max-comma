@@ -1,6 +1,6 @@
 import TextLintTester from "textlint-tester";
 import rule from "../src/textlint-rule-max-comma";
-import fs from "fs";
+import fs from "node:fs";
 
 const tester = new TextLintTester();
 // ruleName, rule, { valid, invalid }

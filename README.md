@@ -9,12 +9,12 @@
 ## Usage
 
     $ npm install -D textlint textlint-rule-max-comma
-    $ $(npm bin)/textlint --rule max-comma README.md
+    $ npx textlint --rule max-comma README.md
     #    11:0  error  This sentence exceeds the maximum count of comma. Maximum is 4.
 
 ## Options
 
-- `max`: maximum number of ","
+- `max`: maximum number of `,`
   - Default: `4`
   - It means that report an error if the sentence include 5 or more `,` 
 
@@ -24,7 +24,7 @@ Configure `"max"` value of the `.textlintrc` file.
 {
   "rules": {
     "max-comma": {
-        "max" : 4
+      "max" : 4
     }
   }
 }

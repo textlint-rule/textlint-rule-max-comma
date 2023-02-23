@@ -1,7 +1,6 @@
 // LICENSE : MIT
 "use strict";
-import filter from "unist-util-filter";
-import { splitAST, Syntax as SentenceSyntax } from "sentence-splitter";
+import { splitAST, SentenceSplitterSyntax } from "sentence-splitter";
 import { StringSource } from "textlint-util-to-string"
 
 function countOfComma(text) {
@@ -18,20 +17,18 @@ export default function (context, options = defaultOptions) {
     return {
         [Syntax.Paragraph](node) {
             const paragraphSentence = splitAST(node)
-            // Remove Code node for avoiding false-positive in `CODE`
-            const paragraphSentenceWithoutNode = filter(paragraphSentence, (node) => {
-                return node.type !== Syntax.Code;
-            });
-            if (!paragraphSentenceWithoutNode) {
-                return;
-            }
-            // This `sum(0,1,2,3,4,5,6,7,8,9,10)` is ok
-            // → This  is ok
-            const sentencesWithoutCode = paragraphSentenceWithoutNode
-                ?.children
-                ?.filter(node => node.type === SentenceSyntax.Sentence) ?? [];
-            sentencesWithoutCode.forEach(sentence => {
-                const source = new StringSource(sentence);
+            const sentences = paragraphSentence.children.filter(node => node.type === SentenceSplitterSyntax.Sentence) ?? [];
+            sentences.forEach(sentence => {
+                // Remove Code node for avoiding false-positive in `CODE`
+                // This `sum(0,1,2,3,4,5,6,7,8,9,10)` is ok
+                // → This is ok
+                const source = new StringSource(sentence, {
+                    replacer: ({ node, maskValue }) => {
+                        if (node.type === Syntax.Code) {
+                            return maskValue("_");
+                        }
+                    }
+                });
                 const sentenceValue = source.toString();
                 const count = countOfComma(sentenceValue);
                 if (count > maxComma) {
