@@ -13,7 +13,7 @@ const defaultOptions = {
 };
 export default function (context, options = defaultOptions) {
     const maxComma = options.max || defaultOptions.max;
-    const { Syntax, RuleError, report } = context;
+    const { Syntax, RuleError, report, locator } = context;
     return {
         [Syntax.Paragraph](node) {
             const paragraphSentence = splitAST(node)
@@ -34,7 +34,7 @@ export default function (context, options = defaultOptions) {
                 if (count > maxComma) {
                     const lastCommandIndex = sentenceValue.lastIndexOf(",");
                     report(node, new RuleError(`This sentence exceeds the maximum count of comma. Maximum is ${maxComma}.`, {
-                        index: source.originalIndexFromIndex(lastCommandIndex)
+                        padding: locator.at(source.originalIndexFromIndex(lastCommandIndex))
                     }));
                 }
             });
