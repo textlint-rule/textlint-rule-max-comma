@@ -1,6 +1,6 @@
 {
   "name": "textlint-rule-max-comma",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "textlint rule that limit maxinum comma(,) count of sentence.",
   "main": "lib/textlint-rule-max-comma.js",
   "files": [
