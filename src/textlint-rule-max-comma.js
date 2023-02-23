@@ -13,7 +13,7 @@ const defaultOptions = {
 };
 export default function (context, options = defaultOptions) {
     const maxComma = options.max || defaultOptions.max;
-    const { Syntax, RuleError, report, getSource } = context;
+    const { Syntax, RuleError, report } = context;
     return {
         [Syntax.Paragraph](node) {
             const paragraphSentence = splitAST(node)
