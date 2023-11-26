@@ -31,11 +31,11 @@
   },
   "homepage": "https://github.com/azu/textlint-rule-max-comma#readme",
   "devDependencies": {
-    "textlint-scripts": "^13.3.0",
-    "textlint-tester": "^13.3.0"
+    "textlint-scripts": "^13.4.1",
+    "textlint-tester": "^13.4.1"
   },
   "dependencies": {
-    "sentence-splitter": "^4.2.0",
-    "textlint-util-to-string": "^3.3.2"
+    "sentence-splitter": "^5.0.0",
+    "textlint-util-to-string": "^3.3.4"
   }
 }
